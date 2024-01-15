@@ -2,6 +2,7 @@ import utime
 
 from mfrc522 import MFRC522
 
+# Change Pin Configuration here if necessary
 reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)
 
 PreviousCard = [0]
@@ -22,7 +23,7 @@ def main():
                     continue
 
                 if stat == reader.OK:
-                    print("Card detected {}  uid={}".format(hex(int.from_bytes(bytes(uid),"little",False)).upper(),reader.tohexstring(uid)))
+                    #print("Card detected {}  uid={}".format(hex(int.from_bytes(bytes(uid),"little",False)).upper(),reader.tohexstring(uid)))
                     firstSectorKey = [0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5]
                     nextSectorKey = [0xD3, 0xF7, 0xD3, 0xF7, 0xD3, 0xF7]
                     #defaultKey = [255,255,255,255,255,255]
@@ -33,6 +34,7 @@ def main():
                         reader.MFRC522_DumpClassic1K(uid, Start=4, End=64, keyA=nextSectorKey)
                     print("Done")
                     PreviousCard = uid
+                    return hex(int.from_bytes(bytes(uid),"little",False)).upper()
             else:
                 PreviousCard=[0]
             utime.sleep_ms(50)                

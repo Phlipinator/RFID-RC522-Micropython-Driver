@@ -3,6 +3,7 @@ import utime
 from mfrc522 import MFRC522
 from rfidaccess import RfidAccess
 
+# Change Pin Configuration here if necessary
 reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)
 access = RfidAccess()
 
