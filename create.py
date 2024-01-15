@@ -6,10 +6,6 @@ from rfidaccess import RfidAccess
 reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)
 access = RfidAccess()
 
-print("")
-print("Please place card on reader")
-print("")
-
 def checksum(data):
     crc = 0xc7
     for byte in data:
@@ -25,6 +21,10 @@ def checksum(data):
 PreviousCard = [0]
 
 def main():
+    print("")
+    print("Please place card on reader")
+    print("")
+
     try:
         while True:
 
