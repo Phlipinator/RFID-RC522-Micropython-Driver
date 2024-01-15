@@ -16,8 +16,6 @@ The Raspberry Pi Pico connects to the RC522 module via the SPI interface. The de
 | MISO        | GP4                   |
 | RST         | GP0                   |
 
----
-
 The Pins can be changed to work with other microcontrollers. Just look for this line in the three files read, create and erase:
 
 ```python
